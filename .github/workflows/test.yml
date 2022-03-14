@@ -7,5 +7,5 @@ jobs:
       - uses: actions/checkout@v3
       - run: wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
       - run: unzip content-linter.zip
-      - run: chmod +x ./content_linter
-      - run: ./content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
+      - run: chmod +x ./bin/content_linter
+      - run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
