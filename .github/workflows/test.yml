@@ -4,8 +4,8 @@ jobs:
   evaluate-content:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
       - run: unzip content-linter.zip
       - run: chmod +x ./content_linter
-      - uses: actions/checkout@v3
       - run: ./content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
