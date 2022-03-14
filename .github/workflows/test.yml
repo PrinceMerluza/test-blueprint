@@ -1,11 +1,15 @@
-name: learn-github-actions
+name: blueprint-linter
 on: [push]
 jobs:
   evaluate-content:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
-      - run: unzip content-linter.zip
-      - run: chmod +x ./bin/content_linter
-      - run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
+      - name: Getting Linter
+        uses: actions/checkout@v3
+        run: wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
+      - name: Extracting Linter Files
+        run: unzip content-linter.zip
+      - name: Assigning Execution Permission to Linter
+        run: chmod +x ./bin/content_linter
+      - name: Evaluating Content
+        run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
