@@ -5,11 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Getting Linter
-        run: wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
-      - name: Extracting Linter Files
-        run: unzip content-linter.zip
-      - name: Assigning Execution Permission to Linter
-        run: chmod +x ./bin/content_linter
-      - name: Evaluating Content
+      - name: Prepare Linter
+        run: |
+          wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
+          unzip content-linter.zip
+          chmod +x ./bin/content_linter
+      - name: Evaluate Content
         run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
