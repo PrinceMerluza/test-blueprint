@@ -14,7 +14,7 @@ done
 counter=0
 while [ $counter -lt $count_error_case ]
 do
-    error_case=$(jq .error[$counter] result.json)
+    error_case=$(jq .error[$counter].description result.json)
     echo "::error::$error_case"
     ((counter++))
 done
