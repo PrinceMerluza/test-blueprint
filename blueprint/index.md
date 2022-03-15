@@ -53,7 +53,7 @@ A recommended Genesys Cloud role for the solutions engineer is Master Admin. For
   - [Install and activate the Analytics Detailed Record Metrics App in your Genesys Cloud Platform](#install-and-activate-the-analytics-detailed-record-metrics-app-in-your-genesys-cloud-platform)
   - [Test the solution](#test-the-solution)
 - [Additional resources](#additional-resources)
-  - [Download the repository](#download-the-repository)
+  - [Download the repository containing the project files](#download-the-repository-containing-the-project-files)
 - [Scenario](#scenario)
 - [Solution](#solution)
 - [Content](#content)
@@ -104,7 +104,7 @@ A recommended Genesys Cloud role for the solutions engineer is Master Admin. For
 * [Analytics Query Builder developer tool quick start](https://developer.mypurecloud.com/gettingstarted/developer-tools-analytics-query.html "a")
 * [Analytics Overview](https://developer.mypurecloud.com/api/rest/v2/analytics/overview.html#:~:text=Genesys%20Cloud%20provides%20a%20rich,performance%20and%20customer%2Fagent%20interactions. "a")
 
-### Download the repository
+### Download the repository containing the project files
 
 ## Scenario
 
