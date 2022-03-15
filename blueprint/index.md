@@ -41,24 +41,6 @@ This solution requires a Genesys Cloud license. For more information on licensin
 
 A recommended Genesys Cloud role for the solutions engineer is Master Admin. For more information on Genesys Cloud roles and permissions, see the [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article").
 
-## Implementation steps
-- [Definitions](#definitions)
-- [Requirements](#requirements)
-  - [Software development kits (SDKs)](#software-development-kits-sdks)
-  - [Genesys Cloud account requirements](#genesys-cloud-account-requirements)
-- [Implementation steps](#implementation-steps)
-  - [Clone the repository containing the project files](#clone-the-repository-containing-the-project-files)
-  - [Generate an OAuth Client Token Implicit Grant in Genesys Cloud](#generate-an-oauth-client-token-implicit-grant-in-genesys-cloud)
-  - [Host and run the Nodejs.app server](#host-and-run-the-nodejsapp-server)
-  - [Install and activate the Analytics Detailed Record Metrics App in your Genesys Cloud Platform](#install-and-activate-the-analytics-detailed-record-metrics-app-in-your-genesys-cloud-platform)
-  - [Test the solution](#test-the-solution)
-- [Additional resources](#additional-resources)
-  - [Download the repository containing the project files](#download-the-repository-containing-the-project-files)
-- [Scenario](#scenario)
-- [Solution](#solution)
-- [Content](#content)
-- [Prerequisites](#prerequisites)
-  - [Specialized knowledge](#specialized-knowledge)
 
 ### Clone the repository containing the project files
 
