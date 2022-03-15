@@ -18,14 +18,17 @@ jobs:
         run: |
           ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
           export IS_SUCCESSFUL=`jq '(.error|length)==0 and (.failed|length)==0' result.json`
-      - name: Evaluate Result
-        if: ${{ env.IS_SUCCESSFUL }} != true
-        uses: actions/github-script@v3
-        with:
-          script: |
-              core.setFailed('Some cases failed')
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
           name: evaluation-log
           path: ./result.json
+      - name: Evaluate Result
+        if: ${{ env.IS_SUCCESSFUL }} != true
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('Some cases failed.')
+        run: |
+          echo "========= FAILED =========="
+          jq '.error[]' rseult.json
