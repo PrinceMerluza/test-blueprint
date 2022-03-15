@@ -32,7 +32,7 @@ jobs:
           ./.github/workflows/display-error.sh
       - name: Evaluate Result
         if: ${{ env.IS_SUCCESSFUL }} != true
-        uses: actions/github-script@v3.
+        uses: actions/github-script@v3
         with:
           script: |
               core.setFailed('Some cases failed.')
