@@ -1,7 +1,7 @@
 name: Blueprint Linter
 on: [push]
 jobs:
-  evaluate_content:
+  validate_content:
     env: 
       IS_SUCCESSFUL: false
       FAILED_CASES: ""
@@ -16,21 +16,21 @@ jobs:
           chmod +x ./bin/content_linter
           wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
           chmod +x jq
-      - name: Run Evaluation
+      - name: Run Validation
         run: |
           ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
           export IS_SUCCESSFUL=`jq '(.error|length)==0 and (.failed|length)==0' result.json`
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
-          name: evaluation-log
+          name: validation-log
           path: ./result.json
       - name: Evaluate Results
         if: ${{ env.IS_SUCCESSFUL }} != true
         run: |
           chmod +x ./.github/workflows/display-error.sh
           ./.github/workflows/display-error.sh
-      - name: Evaluate Result
+      - name: Final Result
         if: ${{ env.IS_SUCCESSFUL }} != true
         uses: actions/github-script@v3
         with:
