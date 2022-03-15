@@ -6,8 +6,7 @@ count_error_case=$(jq '.error|length' result.json)
 counter=0
 while [ $counter -lt $count_failed_case ]
 do
-    failed_case=$(jq .failed[$counter] result.json)
-    failed_case=${failed_case//\n/%0A}
+    failed_case=$(jq .failed[$counter].description result.json)
     echo "::error::$failed_case"
     ((counter++))
 done
