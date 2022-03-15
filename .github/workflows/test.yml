@@ -23,12 +23,16 @@ jobs:
         with:
           name: evaluation-log
           path: ./result.json
+      - name: Failed Cases
+        if: ${{ env.IS_SUCCESSFUL }} != true
+        run: |
+          echo "========= FAILED =========="
+          jq '.failed[]' rseult.json
+          echo "========= UNEXPECTED ERROR =========="
+          jq '.error[]' rseult.json
       - name: Evaluate Result
         if: ${{ env.IS_SUCCESSFUL }} != true
         uses: actions/github-script@v3
         with:
           script: |
               core.setFailed('Some cases failed.')
-        run: |
-          echo "========= FAILED =========="
-          jq '.error[]' rseult.json
