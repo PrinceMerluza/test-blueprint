@@ -29,9 +29,9 @@ jobs:
         if: ${{ env.IS_SUCCESSFUL }} != true
         run: |
           export FAILED_CASES=`jq 'if (.failed|length) > 0 then .failed[] else [] end' result.json`
-          echo "::error::FAILED_CASES"
+          echo "::error::=== FAILED CASES === \n $FAILED_CASES"
           export ERROR_CASES=`jq 'if (.error|length) > 0 then .error[] else [] end' result.json`
-          echo "::error::ERROR_CASES"
+          echo "::error::=== ERROR CASES === \n $ERROR_CASES"
       - name: Evaluate Result
         if: ${{ env.IS_SUCCESSFUL }} != true
         uses: actions/github-script@v3
