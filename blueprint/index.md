@@ -31,7 +31,7 @@ Implementing this solution requires experience in several areas or a willingness
 
 * **Genesys Cloud Platform API SDK** - Client libraries used to simply integrate to Genesys Cloud. This SDK is used for getting the necessary historical data of agents and interactions.
 
-* **Javascript SDK** - A JavaScript library to interface with the Genesys Cloud Platform API, see [Javascript SDK](https://www.npmjs.com/package/purecloud-platform-client-v2).
+* **Javascript SDK** - A JavaScript library to interface with the Genesys Cloud Platform API, see [Javascript SDK](https://www.npmjs.com/package/purecloud-platform-client-v2 "a").
 
 
 
@@ -42,21 +42,33 @@ This solution requires a Genesys Cloud license. For more information on licensin
 A recommended Genesys Cloud role for the solutions engineer is Master Admin. For more information on Genesys Cloud roles and permissions, see the [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article").
 
 ## Implementation steps
-* [Clone the repository](#clone-the-repository-containing-the-project-files "Goes to the Download the repository from GitHub")
-* [Generate an OAuth Client Credentials in Genesys Cloud](#generate-an-oauth-client-token-implicit-grant-in-genesys-cloud "Proceeds to the Creation of OAuth Client Credentials in Genesys Cloud")
-* [Host and run the Nodejs.app server](#host-and-run-the-nodejs.app-server "Opens the Nodejs.app server and runs the application locally")
-* [Install and activate the application inside your Genesys Cloud Org](#install-and-activate-the-analytics-detailed-record-metrics-app-in-your-genesys-cloud-platform "Goes to app activation and installation inside genesys cloud")
-* [Test the solution](#test-the-solution  "Testing if the solution was set up successfully")
+- [Definitions](#definitions)
+- [Requirements](#requirements)
+  - [Software development kits (SDKs)](#software-development-kits-sdks)
+  - [Genesys Cloud account requirements](#genesys-cloud-account-requirements)
+- [Implementation steps](#implementation-steps)
+  - [Clone the repository containing the project files](#clone-the-repository-containing-the-project-files)
+  - [Generate an OAuth Client Token Implicit Grant in Genesys Cloud](#generate-an-oauth-client-token-implicit-grant-in-genesys-cloud)
+  - [Host and run the Nodejs.app server](#host-and-run-the-nodejsapp-server)
+  - [Install and activate the Analytics Detailed Record Metrics App in your Genesys Cloud Platform](#install-and-activate-the-analytics-detailed-record-metrics-app-in-your-genesys-cloud-platform)
+  - [Test the solution](#test-the-solution)
+- [Additional resources](#additional-resources)
+  - [Download the repository](#download-the-repository)
+- [Scenario](#scenario)
+- [Solution](#solution)
+- [Content](#content)
+- [Prerequisites](#prerequisites)
+  - [Specialized knowledge](#specialized-knowledge)
 
 ### Clone the repository containing the project files
 
 * Download the [generate-detail-record-metrics-blueprint](https://github.com/GenesysCloudBlueprints/analytics-detail-record-metrics-blueprint "Opens the generate-detail-record-metrics-blueprint repository in GitHub") repository from GitHub.
 
 ### Generate an OAuth Client Token Implicit Grant in Genesys Cloud
-1. Click this link and follow the step by step procedure on how to [Create an OAuth Client Token Implicit Grant](https://help.mypurecloud.com/articles/create-an-oauth-client/). 
+1. Click this link and follow the step by step procedure on how to [Create an OAuth Client Token Implicit Grant](https://help.mypurecloud.com/articles/create-an-oauth-client/ "a"). 
 2. Once the OAuth is successfully created. Go to Client Details. Make sure to add `http://localhost:3000` in the Authorize redirect URIs section. 
  ![Client Details Authorize Redirect URI](images/client-details-authorize-redirect-uri.png "Client Details Authorize Redirect URI")
-3. In the downloaded code sample, open the [config.js file](https://github.com/jenissabarrera/generate-detail-record-metrics-blueprint/blob/main/docs/scripts/config.js). Add the clientID you generated. 
+3. In the downloaded code sample, open the [config.js file](https://github.com/jenissabarrera/generate-detail-record-metrics-blueprint/blob/main/docs/scripts/config.js "a"). Add the clientID you generated. 
 4. Specify the region of your Genesys Cloud organization e.g `mypurecloud.com, mypurecloud.au`.
 
 ### Host and run the Nodejs.app server
@@ -85,13 +97,21 @@ A recommended Genesys Cloud role for the solutions engineer is Master Admin. For
 2. Click on Select Agent and details of the selected agent will generate on the table. 
    ![Dashboard User Detail](images/user-details.PNG "Dashboard User Detail")
 
-    * In modifying the code, the user can use the [Analytics query builder](https://developer.genesys.cloud/developer-tools/#/analytics-query-builder) in generating the body for each query execution. It also generates the date format that will be needed for the code. 
+    * In modifying the code, the user can use the [Analytics query builder](https://developer.genesys.cloud/developer-tools/#/analytics-query-builder "a") in generating the body for each query execution. It also generates the date format that will be needed for the code. 
 
-## Additional Resources
-* [Genesys Cloud Developer Center](https://developer.mypurecloud.com/)
-* [Analytics Query Builder developer tool quick start](https://developer.mypurecloud.com/gettingstarted/developer-tools-analytics-query.html)
-* [Analytics Overview](https://developer.mypurecloud.com/api/rest/v2/analytics/overview.html#:~:text=Genesys%20Cloud%20provides%20a%20rich,performance%20and%20customer%2Fagent%20interactions.)
+## Additional resources
+* [Genesys Cloud Developer Center](https://developer.mypurecloud.com/ "a")
+* [Analytics Query Builder developer tool quick start](https://developer.mypurecloud.com/gettingstarted/developer-tools-analytics-query.html "a")
+* [Analytics Overview](https://developer.mypurecloud.com/api/rest/v2/analytics/overview.html#:~:text=Genesys%20Cloud%20provides%20a%20rich,performance%20and%20customer%2Fagent%20interactions. "a")
 
+### Download the repository
 
+## Scenario
 
+## Solution
 
+## Content
+
+## Prerequisites
+
+### Specialized knowledge
