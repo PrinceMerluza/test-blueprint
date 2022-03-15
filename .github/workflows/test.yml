@@ -1,18 +1,31 @@
-name: blueprint-linter
+name: Blueprint Linter
 on: [push]
 jobs:
-  evaluate-content:
+  evaluate_content:
+    env: 
+      IS_SUCCESSFUL: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Prepare Linter
+      - name: Install Required Binaries
         run: |
           wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
           unzip content-linter.zip
           chmod +x ./bin/content_linter
-      - name: Evaluate Content
-        run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
-      - uses: actions/upload-artifact@v3
+          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
+          chmod +x jq
+      - name: Run Evaluation
+        run: |
+          ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
+          export IS_SUCCESSFUL=`jq '(.error|length)==0 and (.failed|length)==0' result.json`
+      - name: Evaluate Result
+        if: ${{ IS_SUCCESSFUL }} != true
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('Some cases failed')
+      - name: Upload Log
+        uses: actions/upload-artifact@v3
         with:
           name: evaluation-log
           path: ./result.json
