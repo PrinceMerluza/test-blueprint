@@ -27,9 +27,9 @@ jobs:
         if: ${{ env.IS_SUCCESSFUL }} != true
         run: |
           echo "========= FAILED =========="
-          jq '.failed[]' rseult.json
-          echo "========= UNEXPECTED ERROR =========="
-          jq '.error[]' rseult.json
+           jq 'if (.failed|length) > 0 then .failed[] else [] end' result.json
+          echo "========= UNEXPECTED ERRORS =========="
+           jq 'if (.error|length) > 0 then .error[] else [] end' result.json
       - name: Evaluate Result
         if: ${{ env.IS_SUCCESSFUL }} != true
         uses: actions/github-script@v3
