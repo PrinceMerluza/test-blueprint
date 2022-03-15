@@ -4,6 +4,8 @@ jobs:
   evaluate_content:
     env: 
       IS_SUCCESSFUL: false
+      FAILED_CASES: ""
+      ERROR_CASES: ""
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,10 +28,10 @@ jobs:
       - name: Failed Cases
         if: ${{ env.IS_SUCCESSFUL }} != true
         run: |
-          echo "========= FAILED =========="
-           jq 'if (.failed|length) > 0 then .failed[] else [] end' result.json
-          echo "========= UNEXPECTED ERRORS =========="
-           jq 'if (.error|length) > 0 then .error[] else [] end' result.json
+          export FAILED_CASES=`jq 'if (.failed|length) > 0 then .failed[] else [] end' result.json`
+          echo "::error::FAILED_CASES"
+          export ERROR_CASES=`jq 'if (.error|length) > 0 then .error[] else [] end' result.json`
+          echo "::error::ERROR_CASES"
       - name: Evaluate Result
         if: ${{ env.IS_SUCCESSFUL }} != true
         uses: actions/github-script@v3
