@@ -12,3 +12,7 @@ jobs:
           chmod +x ./bin/content_linter
       - name: Evaluate Content
         run: ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
+      - uses: actions/upload-artifact@v3
+        with:
+          name: evaluation-log
+          path: ./result.json
