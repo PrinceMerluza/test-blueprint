@@ -18,3 +18,8 @@ do
     echo "::error::$error_case"
     ((counter++))
 done
+
+if [ $count_failed_case -gt 0 ] || [ $count_error_case -gt 0]
+then
+    exit 1
+fi
