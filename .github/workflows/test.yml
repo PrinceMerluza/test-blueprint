@@ -25,9 +25,10 @@ jobs:
         with:
           name: evaluation-log
           path: ./result.json
-      - name: Failed Cases
+      - name: Evaluate Results
         if: ${{ env.IS_SUCCESSFUL }} != true
         run: |
+          chmod +x ./.github/workflows/display-error.sh
           ./.github/workflows/display-error.sh
       # - name: Evaluate Result
       #   if: ${{ env.IS_SUCCESSFUL }} != true
