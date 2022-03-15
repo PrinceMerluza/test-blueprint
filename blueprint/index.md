@@ -26,6 +26,7 @@ Implementing this solution requires experience in several areas or a willingness
 - Administrator-level knowledge of Genesys Cloud and the Genesys AppFoundry
 - Genesys Cloud Platform API knowledge
 
+## Implementation steps
 
 ### Software development kits (SDKs)
 
