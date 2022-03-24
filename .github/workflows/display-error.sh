@@ -6,6 +6,7 @@ counter=0
 while [ $counter -lt $count_failed_case ]
 do
     failed_case=$(jq .failed[$counter].description linter-result.json)
+    id=$(jq ".failed[$counter].id" linter-result.json)
 
     line_counter=0
     count_line_highlights=$(jq ".failed[$counter].fileHighlights|length" linter-result.json)
@@ -13,7 +14,11 @@ do
     do
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
         lineFrom=$(jq ".failed[$counter].fileHighlights[$line_counter].lineNumber" linter-result.json)
-        echo "::error file=README.md,line=1,endLine=1,title=hmmm::$failed_case"
+        lineFrom--
+        lineCount=$(jq ".failed[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
+        lineTo=lineFrom+lineCount
+        path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
+        echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
         ((line_counter++))
     done
 
