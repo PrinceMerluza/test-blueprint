@@ -8,7 +8,7 @@ do
     failed_case=$(jq .failed[$counter].description linter-result.json)
 
     line_counter=0
-    count_line_highlights = $(jq ".failed[$counter].fileHighlights|length" linter-result.json)
+    count_line_highlights=$(jq ".failed[$counter].fileHighlights|length" linter-result.json)
     while [ $line_counter -lt $count_line_highlights ]
     do
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
