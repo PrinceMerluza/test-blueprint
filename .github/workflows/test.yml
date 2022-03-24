@@ -9,13 +9,13 @@ jobs:
         run: |
           wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
           unzip content-linter.zip
-          chmod +x ./bin/content_linter
+          chmod +x ./content_linter
           wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
           chmod +x jq
           chmod +x ./.github/workflows/display-error.sh
       - name: Run Validation
         run: |
-          ./bin/content_linter ${{ github.workspace }} --config ./blueprint.rule.json > linter-result.json
+          ./content_linter ${{ github.workspace }} --config ./blueprint.rule.json > linter-result.json
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
