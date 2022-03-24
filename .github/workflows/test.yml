@@ -15,12 +15,12 @@ jobs:
           chmod +x ./.github/workflows/display-error.sh
       - name: Run Validation
         run: |
-          ./bin/content_linter ${{ github.workspace }} ./rules/blueprint.rule.json
+          ./bin/content_linter ${{ github.workspace }} --config ./blueprint.rule.json > linter-result.json
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
           name: validation-log
-          path: ./result.json
+          path: ./linter-result.json
       - name: Evaluate Results
         run: .github/workflows/display-error.sh
         shell: bash
