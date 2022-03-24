@@ -1,6 +1,6 @@
 #!/bin/bash
 
-count_failed_case=$(jq '.failed|length' result.json)
+count_failed_case=$(jq '.failed|length' linter-result.json)
 
 counter=0
 while [ $counter -lt $count_failed_case ]
