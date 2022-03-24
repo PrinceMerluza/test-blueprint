@@ -16,6 +16,7 @@ do
         lineFrom=$(jq ".failed[$counter].fileHighlights[$line_counter].lineNumber" linter-result.json)
         lineFrom--
         lineCount=$(jq ".failed[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
+        lineCount--
         lineTo=lineFrom+lineCount
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
         echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
