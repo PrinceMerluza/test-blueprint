@@ -13,7 +13,7 @@ do
     do
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
         lineFrom=$(jq ".failed[$counter].fileHighlights[$line_counter].lineNumber" linter-result.json)
-        echo "::error file=$path,line=$lineFrom::$failed_case"
+        echo "::error file=index.md,line=$lineFrom,endLine=$lineFrom::$failed_case"
         ((line_counter++))
     done
 
