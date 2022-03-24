@@ -14,10 +14,10 @@ do
     do
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
         lineFrom=$(jq ".failed[$counter].fileHighlights[$line_counter].lineNumber" linter-result.json)
-        lineFrom--
+        lineFrom=$(($lineFrom-1))
         lineCount=$(jq ".failed[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
-        lineCount--
-        lineTo=lineFrom+lineCount
+        lineCount=$(($lineCount-1))
+        lineTo=$(($lineFrom+$lineCount))
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
         echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
         ((line_counter++))
