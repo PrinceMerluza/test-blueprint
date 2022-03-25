@@ -19,7 +19,7 @@ do
         lineCount=$(($lineCount-1))
         lineTo=$(($lineFrom+$lineCount))
         path=$(jq ".failed[$counter].fileHighlights[$line_counter].path" linter-result.json)
-        echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
+        echo "::error file=README.md,line=3,endLine=3,title=aaa::$failed_case"
         ((line_counter++))
     done
 
