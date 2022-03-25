@@ -19,7 +19,16 @@ do
         lineCount=$(jq ".failed[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
         lineCount=$(($lineCount-1))
         lineTo=$(($lineFrom+$lineCount))
+        lineContent=$(jq ".failed[$counter].fileHighlights[$line_counter].lineContent" linter-result.json)
+        
         echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
+        if [ $lineCount -eq 0 ]
+        then
+            echo "(ln. $lineFrom) - $lineContent"
+        else
+            echo "(ln. $lineFrom - $lineTo) - $lineContent"
+        fi
+
         ((line_counter++))
     done
 
@@ -42,7 +51,16 @@ do
         lineCount=$(jq ".success[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
         lineCount=$(($lineCount-1))
         lineTo=$(($lineFrom+$lineCount))
+        lineContent=$(jq ".success[$counter].fileHighlights[$line_counter].lineContent" linter-result.json)
+        
         echo "::notice file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$success_case"
+        if [ $lineCount -eq 0 ]
+        then
+            echo "(ln. $lineFrom) - $lineContent"
+        else
+            echo "(ln. $lineFrom - $lineTo) - $lineContent"
+        fi
+        
         ((line_counter++))
     done
 
