@@ -18,7 +18,7 @@ do
         lineCount=$(($lineCount-1))
         lineTo=$(($lineFrom+$lineCount))
         # echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
-        echo "::error file=blueprint/index.md,line=1,endLine=1,title=aaaaa::$failed_case"
+        echo "::error file=blueprint/index.md,line=20,endLine=20,title=aaaaa::$failed_case"
         ((line_counter++))
     done
 
