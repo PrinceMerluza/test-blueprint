@@ -17,7 +17,7 @@ This Genesys Cloud Developer Blueprint explains how to get actual data that user
 
 * **Analytics Query Builder** - The Analytics Query Builder developer tool provides a user interface that simplifies the creation of analytics queries. You pick the analytics criteria. The tool generates an analytics query that it runs against the Genesys Cloud Analytics API and returns a query result from your Genesys Cloud organization. You can use the JSON in the generated query in your own application.
 * **Detailed Record Metrics** - Audit style records that capture a very fine-grained level of detail around user (e.g. agent) and customer interactions.
-
+ 
 ## Requirements
 
 Implementing this solution requires experience in several areas or a willingness to learn:
