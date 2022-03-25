@@ -32,6 +32,12 @@ do
         ((line_counter++))
     done
 
+    # If no line highlights show the case anyway
+    if [ $count_line_highlights -eq 0 ]
+    then
+        echo "::error title=$id::$failed_case"
+    fi
+
     ((counter++))
 done
 
@@ -63,6 +69,12 @@ do
         
         ((line_counter++))
     done
+
+    # If no line highlights show the case anyway
+    if [ $count_line_highlights -eq 0 ]
+    then
+        echo "::error title=$id::$success_case"
+    fi
 
     ((counter++))
 done
