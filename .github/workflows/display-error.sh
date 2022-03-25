@@ -73,7 +73,7 @@ do
     # If no line highlights show the case anyway
     if [ $count_line_highlights -eq 0 ]
     then
-        echo "::error title=$id::$success_case"
+        echo "::notice title=$id::$success_case"
     fi
 
     ((counter++))
