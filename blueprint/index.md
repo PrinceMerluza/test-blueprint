@@ -20,8 +20,8 @@ This Genesys Cloud Developer Blueprint explains how to get actual data that user
  
 ## Requirements
 
-
-Implementing this solution requires experience in several areas or a willingness to learn:
+ 
+Implementing this solutiaaon requires experience in several areas or a willingness to learn:
 
 - Administrator-level knowledge of Genesys Cloud and the Genesys AppFoundry
 - Genesys Cloud Platform API knowledge
