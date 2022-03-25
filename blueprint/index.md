@@ -1,5 +1,5 @@
 ---
-title: Generate Analytics Detailed Record Metrics
+title: Geneasrate Analytics Detailed Record Metrics
 author: jenissa.barrera
 indextype: blueprint
 icon: blueprint
