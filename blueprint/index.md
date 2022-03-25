@@ -19,7 +19,7 @@ This Genesys Cloud Developer Blueprint explains how to get actual data that user
 * **Detailed Record Metrics** - Audit style records that capture a very fine-grained level of detail around user (e.g. agent) and customer interactions.
  
 ## Requirements
-
+  
 
 
 Implementing this solution requires experience in several areas or a willingness to learn:
