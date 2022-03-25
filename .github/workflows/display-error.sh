@@ -1,7 +1,9 @@
 #!/bin/bash
 
 count_failed_case=$(jq '.failed|length' linter-result.json)
+count_success_case=$(jq '.success|length' linter-result.json)
 
+# Display failed cases first
 counter=0
 while [ $counter -lt $count_failed_case ]
 do
@@ -17,8 +19,30 @@ do
         lineCount=$(jq ".failed[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
         lineCount=$(($lineCount-1))
         lineTo=$(($lineFrom+$lineCount))
-        # echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
-        echo "::error file=blueprint/index.md,line=20,endLine=20,title=aaaaa::$failed_case"
+        echo "::error file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$failed_case"
+        ((line_counter++))
+    done
+
+    ((counter++))
+done
+
+# Display success cases
+counter=0
+while [ $counter -lt $count_success_case ]
+do
+    success_case=$(jq .success[$counter].description linter-result.json)
+    id=$(jq ".success[$counter].id" -r linter-result.json)
+
+    line_counter=0
+    count_line_highlights=$(jq ".success[$counter].fileHighlights|length" linter-result.json)
+    while [ $line_counter -lt $count_line_highlights ]
+    do
+        path=$(jq ".success[$counter].fileHighlights[$line_counter].path" -r linter-result.json)
+        lineFrom=$(jq ".success[$counter].fileHighlights[$line_counter].lineNumber" linter-result.json)
+        lineCount=$(jq ".success[$counter].fileHighlights[$line_counter].lineCount" linter-result.json)
+        lineCount=$(($lineCount-1))
+        lineTo=$(($lineFrom+$lineCount))
+        echo "::notice file=$path,line=$lineFrom,endLine=$lineTo,title=$id::$success_case"
         ((line_counter++))
     done
 
