@@ -8,8 +8,8 @@ jobs:
       - name: Install Required Binaries
         run: |
           wget https://github.com/purecloudlabs/devcenter-blueprint-linter/releases/latest/download/gc_linter.zip
-          unzip content-linter.zip
-          chmod +x ./content_linter
+          unzip gc_linter.zip
+          chmod +x ./gc_linter
           wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
           chmod +x jq
           chmod +x ./.github/workflows/display-error.sh
