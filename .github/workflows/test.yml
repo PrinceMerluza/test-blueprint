@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Required Binaries
         run: |
-          wget https://github.com/PrinceMerluza/devcenter-content-linter/releases/latest/download/content-linter.zip
+          wget https://github.com/purecloudlabs/devcenter-blueprint-linter/releases/latest/download/gc_linter.zip
           unzip content-linter.zip
           chmod +x ./content_linter
           wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
@@ -15,12 +15,12 @@ jobs:
           chmod +x ./.github/workflows/display-error.sh
       - name: Run Validation
         run: |
-          ./content_linter ${{ github.workspace }} --config ./blueprint.rule.json > linter-result.json
+          ./gc_linter ${{ github.workspace }} -c ./blueprint.rule.json -t ./results-template.md.html > result.md
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
-          name: validation-log
-          path: ./linter-result.json
+          name: linter-result
+          path: ./result.md
       - name: Evaluate Results
         run: .github/workflows/display-error.sh
         shell: bash
