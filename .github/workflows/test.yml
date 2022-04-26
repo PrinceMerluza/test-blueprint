@@ -15,7 +15,7 @@ jobs:
           chmod +x ./.github/workflows/display-error.sh
       - name: Run Validation
         run: |
-          ./gc_linter ${{ github.workspace }} -c ./blueprint.rule.json -t ./results-template.md.html > result.md
+          ./gc_linter ${{ github.workspace }} -c ./blueprint.rule.json -t ./results-template.md.tmpl > result.md
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
