@@ -16,6 +16,8 @@ jobs:
       - name: Run Validation
         run: |
           ./gc_linter ${{ github.workspace }} -c ./blueprint.rule.json -t ./results-template.md.tmpl > result.md
+          ./gc_linter ${{ github.workspace }} -c ./blueprint.rule.json > linter-result.json
+          ./display-error.sh
       - name: Upload Log
         uses: actions/upload-artifact@v3
         with:
